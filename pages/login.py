@@ -15,7 +15,7 @@ def login_page():
 
     with doc:
         h1("Log ind", cls='page_header')
-        with div(id='login_box'):
+        with div(cls='login_box1'):
             if app.ctx.msg:
                 p(app.ctx.msg, cls='login_err')
                 app.ctx.msg = ""
@@ -30,6 +30,10 @@ def login_page():
                     with div(cls='login_row'):
                         input_(value='Log ind', type='submit', cls='button')
 
+        with div(cls='login_box2'):
+            if app.ctx.msg:
+                p(app.ctx.msg, cls='login_err')
+                app.ctx.msg = ""
             with div(cls='login_col'):
                 with form(method='POST', action='/register'):
                     with div(cls='login_row'):

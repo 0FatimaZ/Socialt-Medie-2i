@@ -3,13 +3,25 @@
     margin: 0;
 }
 
-#login_box {
+.login_box1 {
     border: 1px solid black;
     padding: 5px;
+    display: inline-block;
+    width: 200px;
+    position: relative;
+    top: -60px;
+}
+
+.login_box2 {
+    border: 1px solid black;
+    padding: 5px;
+    display: inline-block;
+    width: 200px;
 }
 
 .login_col {
-    display: inline-flex;
+    display: inline-block;
+    max-width: 100px;
 }
 
 .login_row {
