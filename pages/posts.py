@@ -30,22 +30,36 @@ def show_posts(posts=[], user=None):
         if user is not None:
             userprofile.user_profile(user)
         for display_post in posts:
-            with div(cls='post'):
-                h1(display_post.post.title)
-                with div(cls='author'):
-                    a(f'af: {display_post.author.username}',
-                        href=f'/u/{quote(display_post.author.username)}',
-                        cls='author_link')
+            with div(cls='content'):
                 if isinstance(display_post.post, post.TextPost): # text post
-                    with div():
+                    with div(cls='author-text'):
+                        a(f'af: {display_post.author.username}',
+                            href=f'/u/{quote(display_post.author.username)}',
+                            cls='author_link')
+                    with div(cls='post'):
+                        h1(display_post.post.title)
                         lines = filter(bool, display_post.post.contents.splitlines())
                         for par in lines:
                             p(par)
+                    with div(cls='comment-box'):
+                        p('comment...')
+                        
                 else: # image post
-                    with div():
-                        img(src=app.url_for('static',
-                                            name='static',
-                                            filename=f'images/posts/{display_post.post.image_path}'))
+                    with div(cls='post'):
+                        with div(cls='image'):
+                            img(src=app.url_for('static',
+                                                name='static',
+                                                filename=f'images/posts/{display_post.post.image_path}'))
+                    with div(cls='comment-box'):
+                        with div(cls='author'):
+                            a(f'af: {display_post.author.username}',
+                                href=f'/u/{quote(display_post.author.username)}',
+                                cls='author_link')
+                            h1(display_post.post.title)
+                        with div(cls='comment'):
+                            p('comment...')
+                            
+                
 
     return doc.render()
 

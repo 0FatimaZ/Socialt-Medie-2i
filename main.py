@@ -38,7 +38,7 @@ postDAO.create_table()
 
 # Endpoints
 @app.get("/")
-@protected
+# @protected
 async def index_page(request):
     """Display all posts."""
     all_posts = postDAO.fetch_all_display()
