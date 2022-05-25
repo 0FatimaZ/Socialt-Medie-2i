@@ -17,26 +17,29 @@ def show_posts(posts=[], user=None):
         link(rel='stylesheet', href=app.url_for('static',
                                                 name='static',
                                                 filename='style.css'))
+        link(rel='stylesheet', href='https://use.typekit.net/yzl7wku.css')
 
     with doc:
         menu_items = [
-            ('Forside', '/'),
-            ('Log ud', '/logout'),
-            ('Ny post', '/write'),
-            ('Nyt billede', '/upload'),
-            ('Rediger profil', '/profile')
+            ('Home icon.png', '/'),
+            ('Log out icon.png', '/logout'),
+            ('New post icon.png', '/write'),
+            ('New post icon.png', '/upload'),
+            ('Venner icon.png', '/profile'),
+            ('search icon.png', '/')
         ]
-        show_menu(menu_items)
+        with div(cls='header'):
+            show_menu(menu_items)
         if user is not None:
             userprofile.user_profile(user)
         for display_post in posts:
             with div(cls='content'):
                 if isinstance(display_post.post, post.TextPost): # text post
                     with div(cls='author-text'):
-                        a(f'af: {display_post.author.username}',
+                        a(f'{display_post.author.username}',
                             href=f'/u/{quote(display_post.author.username)}',
                             cls='author_link')
-                    with div(cls='post'):
+                    with div(cls='post-txt'):
                         h1(display_post.post.title)
                         lines = filter(bool, display_post.post.contents.splitlines())
                         for par in lines:
@@ -52,15 +55,12 @@ def show_posts(posts=[], user=None):
                                                 filename=f'images/posts/{display_post.post.image_path}'))
                     with div(cls='comment-box'):
                         with div(cls='author'):
-                            a(f'af: {display_post.author.username}',
+                            a(f'{display_post.author.username}',
                                 href=f'/u/{quote(display_post.author.username)}',
                                 cls='author_link')
                             h1(display_post.post.title)
                         with div(cls='comment'):
                             p('comment...')
-                            
-                
-
     return doc.render()
 
 def create_image_page():
