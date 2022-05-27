@@ -29,15 +29,19 @@ def edit_profile(user):
         link(rel='stylesheet', href=app.url_for('static',
                                                 name='static',
                                                 filename='style.css'))
+        link(rel='stylesheet', href='https://use.typekit.net/yzl7wku.css')
     
     with doc:
         menu_items = [
-            ('Forside', '/'),
-            ('Log ud', '/logout'),
-            ('Ny post', '/write'),
-            ('Nyt billede', '/upload'),
+            ('Home icon.png', '/'),
+            ('Log out icon.png', '/logout'),
+            ('New post icon.png', '/write'),
+            ('New post icon.png', '/upload'),
+            ('Venner icon.png', '/profile'),
+            ('search icon.png', '/')
         ]
-        show_menu(menu_items)
+        with div(cls='header'):
+            show_menu(menu_items)
         with form(cls='profile-form', enctype='multipart/form-data', method='POST', action='/update_profile'):
             with div(id='profile-info'):
                 h1(f'{user.username} - rediger profil')

@@ -58,7 +58,8 @@ def show_posts(posts=[], user=None):
                             a(f'{display_post.author.username}',
                                 href=f'/u/{quote(display_post.author.username)}',
                                 cls='author_link')
-                            h1(display_post.post.title)
+                            with div(cls=('post-title')):
+                                h1( display_post.post.title)
                         with div(cls='comment'):
                             p('comment...')
     return doc.render()
@@ -71,15 +72,19 @@ def create_image_page():
         link(rel='stylesheet', href=app.url_for('static',
                                                 name='static',
                                                 filename='style.css'))
+        link(rel='stylesheet', href='https://use.typekit.net/yzl7wku.css')
 
     with doc:
         menu_items = [
-            ('Forside', '/'),
-            ('Log ud', '/logout'),
-            ('Ny post', '/write'),
-            ('Rediger profil', '/profile')
+            ('Home icon.png', '/'),
+            ('Log out icon.png', '/logout'),
+            ('New post icon.png', '/write'),
+            ('New post icon.png', '/upload'),
+            ('Venner icon.png', '/profile'),
+            ('search icon.png', '/')
         ]
-        show_menu(menu_items)
+        with div(cls='header'):
+            show_menu(menu_items)
         with form(cls='post-form', enctype='multipart/form-data', method='POST', action='/post/image'):
             with div(cls='post'):
                 input_(type='text', cls='title_inp',
@@ -98,15 +103,19 @@ def create_page():
         link(rel='stylesheet', href=app.url_for('static',
                                                 name='static',
                                                 filename='style.css'))
+        link(rel='stylesheet', href='https://use.typekit.net/yzl7wku.css')
 
     with doc:
         menu_items = [
-            ('Forside', '/'),
-            ('Log ud', '/logout'),
-            ('Nyt billede', '/upload'),
-            ('Rediger profil', '/profile')
+            ('Home icon.png', '/'),
+            ('Log out icon.png', '/logout'),
+            ('New post icon.png', '/write'),
+            ('New post icon.png', '/upload'),
+            ('Venner icon.png', '/profile'),
+            ('search icon.png', '/')
         ]
-        show_menu(menu_items)
+        with div(cls='header'):
+            show_menu(menu_items)
         with form(cls='post-form', method='POST', action='/post/text'):
             with div(cls='post'):
                 input_(type='text', cls='title_inp',
