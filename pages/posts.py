@@ -28,8 +28,18 @@ def show_posts(posts=[], user=None):
             ('Venner icon.png', '/profile'),
             ('search icon.png', '/')
         ]
-        with div(cls='header'):
-            show_menu(menu_items)
+        with div(cls='header-list'):
+            with div(cls='header-logo'):
+                img(src=app.url_for('static',
+                                    name='static',
+                                    filename='Asset 4.png'))
+            with div(cls='header-profile'):
+                img(src=app.url_for('static',
+                                    name='static',
+                                    filename='Profile icon.png'))
+            with div(cls='header'):
+                show_menu(menu_items)
+            
         if user is not None:
             userprofile.user_profile(user)
         for display_post in posts:
