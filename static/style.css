@@ -22,6 +22,10 @@
     padding-right: 50px;
 }
 
+.all {
+    margin-top: 200px;
+}
+
 .header-list {
     border-bottom: 1px solid black;
     box-shadow: 0px 1.3px 0px 0px #808080;
@@ -29,6 +33,9 @@
     padding-top: 20px;
     padding-bottom: 20px;
     text-decoration: none;
+    position: fixed;
+    top: 0px;
+    width: 100%;
   }
 
 .header {
@@ -38,6 +45,7 @@
 .content {
     margin-top: 30px;
     overflow: hidden;
+    margin-bottom: 80px;
 }
 
 .login_box1 {
